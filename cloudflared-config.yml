@@ -1,0 +1,18 @@
+# Cloudflare Tunnel Configuration
+# Replace <TUNNEL-ID> with your actual tunnel ID after running: cloudflared tunnel create url-shortener
+# Replace <CREDENTIALS-FILE> with the path to your credentials JSON file
+
+tunnel: <TUNNEL-ID>
+credentials-file: <CREDENTIALS-FILE>
+
+ingress:
+  # Main frontend access
+  - hostname: yourdomain.com
+    service: http://frontend:80
+
+  # Optional: Direct API access (uncomment if needed)
+  # - hostname: api.yourdomain.com
+  #   service: http://backend:8000
+
+  # Catch-all rule (required)
+  - service: http_status:404
