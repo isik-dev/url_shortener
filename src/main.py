@@ -1,3 +1,4 @@
+import asyncio
 from contextlib import asynccontextmanager
 from typing import Annotated, AsyncGenerator
 from fastapi import Body, Depends, FastAPI, status, HTTPException
@@ -13,9 +14,15 @@ from src.service import generate_slug, get_url_by_slug
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    async with engine.begin() as connection:
-        # Migration must happen synchronously
-        await connection.run_sync(Base.metadata.create_all)
+    for attempt in range(10):
+        try:
+            async with engine.begin() as connection:
+                await connection.run_sync(Base.metadata.create_all)
+            break
+        except Exception as e:
+            if attempt == 9:
+                raise
+            await asyncio.sleep(3)
     yield
 
 
