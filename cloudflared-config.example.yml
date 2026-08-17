@@ -1,4 +1,9 @@
-# Cloudflare Tunnel Configuration
+# Cloudflare Tunnel Configuration - TEMPLATE
+#
+# Copy this to cloudflared-config.yml (which is gitignored) and fill in the
+# real values. docker-compose.yml mounts that copy, not this file:
+#     cp cloudflared-config.example.yml cloudflared-config.yml
+#
 # Replace <TUNNEL-ID> with your actual tunnel ID after running: cloudflared tunnel create url-shortener
 # Replace <CREDENTIALS-FILE> with the path to your credentials JSON file
 

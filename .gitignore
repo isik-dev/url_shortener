@@ -12,3 +12,7 @@ wheels/
 # Cloudflare Tunnel credentials (secret; lives on the Pi only).
 # Contains the TunnelSecret - never commit. This repo is PUBLIC.
 cloudflared-credentials.json
+
+# The filled-in tunnel config (real tunnel ID + hostnames) stays on the
+# host. Commit cloudflared-config.example.yml instead.
+cloudflared-config.yml

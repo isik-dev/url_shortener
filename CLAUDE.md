@@ -31,7 +31,7 @@ DB session lifecycle: `src/database/db.py` builds the async engine from `POSTGRE
 
 ## Frontend & deployment
 
-`frontend/` is a static `index.html` served by nginx, which proxies `/short_url` and `/{slug}` patterns to the `backend` service (see `frontend/nginx.conf`). The `cloudflared` service in `docker-compose.yml` exposes the frontend via a Cloudflare Tunnel — it expects `cloudflared-credentials.json` next to `cloudflared-config.yml` and a real tunnel ID/hostname filled into the config (placeholders ship in the repo).
+`frontend/` is a static `index.html` served by nginx, which proxies `/short_url` and `/{slug}` patterns to the `backend` service (see `frontend/nginx.conf`). The `cloudflared` service in `docker-compose.yml` exposes the frontend via a Cloudflare Tunnel — it expects `cloudflared-credentials.json` next to `cloudflared-config.yml`, neither of which is committed — copy `cloudflared-config.example.yml` to `cloudflared-config.yml` and fill in the real tunnel ID/hostname.
 
 ## Known rough edges
 
