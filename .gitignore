@@ -8,3 +8,7 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Cloudflare Tunnel credentials (secret; lives on the Pi only).
+# Contains the TunnelSecret - never commit. This repo is PUBLIC.
+cloudflared-credentials.json
